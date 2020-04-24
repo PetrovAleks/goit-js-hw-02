@@ -1,22 +1,21 @@
-const message = prompt('В какую страну оформить доставку?').toLowerCase();
-const priceList = [100, 250, 170, 80, 120];
+const checkForSpam = function(message) {
+  const lowCaseMessage = message.toLowerCase().split(' ');
+  // eslint-disable-next-line
+  for (const banWord of lowCaseMessage) {
+    if (banWord.includes('sale')) {
+      return true; // eslint-disable-next-line
+    } else if (banWord.includes('spam')) {
+      return true;
+    }
+  }
 
-switch (message) {
-  case 'китай':
-    alert(`Доставка в Китай будет стоить ${priceList[0]} кредитов`);
-    break;
-  case 'чили':
-    alert(`Доставка в Чили будет стоить ${priceList[1]} кредитов`);
-    break;
-  case 'австралия':
-    alert(`Доставка в Австралию будет стоить ${priceList[2]} кредитов`);
-    break;
-  case 'индия':
-    alert(`Доставка в Индию будет стоить ${priceList[3]} кредитов`);
-    break;
-  case 'ямайка':
-    alert(`Доставка в Австралию будет стоить ${priceList[4]} кредитов`);
-    break;
-  default:
-    alert('В вашей стране доставка не доступна');
-}
+  return false;
+};
+
+console.log(checkForSpam('Latest technology news')); // false
+
+console.log(checkForSpam('JavaScript weekly newsletter')); // false
+
+console.log(checkForSpam('Get best sale offers now!')); // true
+
+console.log(checkForSpam('[SPAM] How to earn fast money?')); // true

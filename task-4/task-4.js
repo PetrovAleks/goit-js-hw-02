@@ -1,22 +1,25 @@
-/* eslint-disable no-restricted-globals */
-let credits = 23580;
-const pricePerDroid = 3000;
-let message = prompt('Какое количество ремонтных дроидов вы купите?');
+const formatString = function(string) {
+  if (string.length > 42) {
+    let shortString = string.slice(0, 41);
 
-if (message === null) {
-  message = 'Отменено пользователем!';
-  console.log(message);
-} else if (isNaN(message)) {
-  alert('Вы ввели некорректные данные, попробуйте еще раз');
-} else {
-  message = Number(message);
-}
+    shortString += `...`;
 
-const totalPrice = message * pricePerDroid;
+    return shortString;
+  }
 
-if (totalPrice > credits) {
-  console.log('Недостаточно средств на счету!');
-} else if (message >= 0) {
-  credits -= totalPrice;
-  alert(`Вы купили ${message} дроидов, на счету осталось ${credits} кредитов.`);
-}
+  return string;
+};
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// вернется оригинальная строка
+
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+// вернется форматированная строка
+
+console.log(formatString('Curabitur ligula sapien.'));
+// вернется оригинальная строка
+
+console.log(
+  formatString(
+    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
+  ),
+);
