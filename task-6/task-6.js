@@ -10,12 +10,13 @@ do {
     // eslint-disable-next-line
     continue;
   }
-
   numbers.push(Number(input));
 } while (input !== null);
-
-for (let i = 0; i < numbers.length; i += 1) {
-  total += numbers[i];
+console.log(numbers);
+if (numbers.length !== 0) {
+  for (let i = 0; i < numbers.length; i += 1) {
+    total += numbers[i];
+  }
 }
 
 console.log(`Общая сумма чисел равна ${total}`);

@@ -1,14 +1,9 @@
 const checkForSpam = function(message) {
-  const lowCaseMessage = message.toLowerCase().split(' ');
-  // eslint-disable-next-line
-  for (const banWord of lowCaseMessage) {
-    if (banWord.includes('sale')) {
-      return true; // eslint-disable-next-line
-    } else if (banWord.includes('spam')) {
-      return true;
-    }
-  }
+  const lowCaseMessage = message.toLowerCase();
 
+  if (lowCaseMessage.includes('sale') || lowCaseMessage.includes('spam')) {
+    return true;
+  }
   return false;
 };
 

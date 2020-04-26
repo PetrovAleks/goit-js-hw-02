@@ -9,11 +9,11 @@ const isLoginValid = function(login) {
 
 const isLoginUnique = function(allLogins, login) {
   // eslint-disable-next-line
-  for (const name of allLogins) {
-    if (login === name) {
-      return false;
-    }
+
+  if (allLogins.includes(login)) {
+    return false;
   }
+
   return true;
 };
 
@@ -27,8 +27,6 @@ const addLogin = function(allLogins, login) {
   } else {
     alert('Такой логин уже используется!');
   }
-
-  return console.log(logins);
 };
 
 /*
@@ -39,4 +37,3 @@ console.log(addLogin(logins, 'robotGoogles')); // 'Такой логин уже 
 console.log(addLogin(logins, 'Zod')); // 'Ошибка! Логин должен быть от 4 до 16 символов'
 console.log(addLogin(logins, 'jqueryisextremelyfast'));
 console.log(addLogin(logins, 'Ajax')); // 'Ошибка! Логин должен быть от 4 до 16 символов'
-console.log(logins);
